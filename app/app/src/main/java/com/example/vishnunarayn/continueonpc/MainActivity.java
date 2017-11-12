@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,11 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
-        StrictMode.setThreadPolicy(policy);
-*/
         Button connect = (Button) findViewById(R.id.connect);
         final EditText IPAddress = (EditText) findViewById(R.id.IPAddress);
         final TextView result = (TextView) findViewById(R.id.result);
@@ -47,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 IP = IPAddress.getText().toString();
                 result.setText(IP);
-
+                finish();
             }
         });
 
@@ -56,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(url != null ) {
             new sendToPhone().execute(url, IP);
+            finish();
         }
     }
 

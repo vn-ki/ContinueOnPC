@@ -1,7 +1,7 @@
 import socket
 import webbrowser
 
-host = "0.0.0.0"
+host = "10.250.34.133"
 port = 27015
 
 s = socket.socket()
