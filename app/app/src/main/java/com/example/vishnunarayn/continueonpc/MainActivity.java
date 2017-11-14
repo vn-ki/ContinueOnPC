@@ -20,7 +20,7 @@ import java.net.Socket;
 public class MainActivity extends AppCompatActivity {
 
     private String IP;
-    private static final String TAG = "Shit";
+    private String pass;
 
 
     @Override
@@ -31,16 +31,22 @@ public class MainActivity extends AppCompatActivity {
         Button connect = (Button) findViewById(R.id.connect);
         final EditText IPAddress = (EditText) findViewById(R.id.IPAddress);
         final TextView result = (TextView) findViewById(R.id.result);
+        final EditText password = (EditText)findViewById(R.id.password);
 
         SharedPreferences sp = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         IP = sp.getString("IPADDR", "DEFAULT");
+        pass = sp.getString("PASS", "DEFAULT");
         result.setText(IP);
-        Log.i(TAG, "HI");
 
         connect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                IP = IPAddress.getText().toString();
+                String IPTemp = IPAddress.getText().toString();
+                String passTemp = password.getText().toString();
+                if(!passTemp.isEmpty())
+                    pass = passTemp;
+                if(!IPTemp.isEmpty())
+                    IP = IPTemp;
                 result.setText(IP);
                 finish();
             }
@@ -50,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         String url = intent.getStringExtra(Intent.EXTRA_TEXT);
 
         if(url != null ) {
-            new sendToPhone().execute(url, IP);
+            new sendToPhone().execute(url, IP, pass);
             finish();
         }
     }
@@ -62,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("IPADDR",  IP);
+        editor.putString("PASS", pass);
         editor.commit();
 
     }
@@ -71,10 +78,11 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(String... args) {
             String url = args[0];
             String IP = args[1];
+            String pass = args[2];
             try {
                 Socket s = new Socket(IP, 27015);
                 DataOutputStream PC = new DataOutputStream(s.getOutputStream());
-                PC.writeUTF(url);
+                PC.writeUTF(pass+" "+url);
                 PC.flush();
                 PC.close();
                 s.close();
