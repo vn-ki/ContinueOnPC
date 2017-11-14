@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!IPTemp.isEmpty())
                     IP = IPTemp;
                 result.setText(IP);
+                new sendToPhone().execute("", IP, pass);
                 finish();
             }
         });
