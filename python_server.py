@@ -1,5 +1,6 @@
 import socket
 import webbrowser
+import os
 
 host = "10.250.34.133"
 port = 27015
@@ -18,5 +19,8 @@ while True :
 	if recvPass == password :
 		url = msg.split(' ', 1)[1]
 		webbrowser.open(url)
-
+		dm = os.environ.get("DESKTOP_SESSION")
+		if 'gnome' in dm :
+			os.system('gnome-screensaver-command -d')
+		
 s.close()
