@@ -30,17 +30,38 @@
             android:id="@+id/connect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/IPAddress"
+            android:layout_below="@+id/result"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="55dp"
-            android:text="Connect" />
+            android:layout_marginTop="38dp"
+            android:text="Connect/Unlock" />
 
         <TextView
             android:id="@+id/result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/connect"
+            android:layout_below="@+id/IPAddress"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="66dp" />
+            android:layout_marginTop="25dp"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/IPAddress"
+            android:layout_marginTop="68dp"
+            android:ems="10"
+            android:hint="Pass"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="46dp"
+            android:text="You need to type the password only once." />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
