@@ -3,7 +3,7 @@ import webbrowser
 import os
 from sys import platform
 
-host = "10.250.34.133"
+host = ""
 port = 27015
 
 password = "abcd" #Ideally read from a file

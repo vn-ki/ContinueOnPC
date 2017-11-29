@@ -8,7 +8,7 @@ An android phone and a PC able to run python.
 
 ## Installation
 
-Clone this repository and change the IP in the ```python_server.py``` to your IP and add a password in the password string. . Install the apk. The path to apk is ```./app/app/build/outputs/apk/debug/app-debug.apk```. 
+Clone this repository and add a password in the password string inside the ```python_server.py``` file . Install the apk. The path to apk is ```./app/app/build/outputs/apk/debug/app-debug.apk```. 
 
 ### Usage
 Run the ```python_server.py``` on your pc. Open the app, type in your IP and password and click Connect/Unlock. Now you're good to go. You need to type you're password only once. 
