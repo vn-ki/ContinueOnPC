@@ -5,8 +5,10 @@ from sys import platform
 
 host = ""
 port = 27015
-
-password = "abcd" #Ideally read from a file
+#opening password.txt to access password
+with open("password.txt","r") as file:
+	for line in lines:
+		password = line
 
 s = socket.socket()
 s.bind((host, port))
